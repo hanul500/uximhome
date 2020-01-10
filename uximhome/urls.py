@@ -23,6 +23,10 @@ from .views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_page),
+    path('session/',session_page),
+    path('project/',project_page),
+    path('contact/',contact_page),
+    path('about/',about_page),
     path('register/', user_views.register, name='register'),
     path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
