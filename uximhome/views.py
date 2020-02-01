@@ -7,7 +7,7 @@ from django.template.loader import get_template
 
 
 def home_page(request):
-	context = {"title": "안녕 유심"}
+	context = {"title": "UXIM HOMEPAGE"}
 	return render(request, "home.html", context)
 
 def session_page(request):

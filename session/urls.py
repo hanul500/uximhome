@@ -1,17 +1,22 @@
 from django.urls import path
 from .views import (
-	blog_post_list_view,
-	blog_post_create_view,
-	blog_post_detail_view,
-	blog_post_update_view,
-	blog_post_delete_view,
+	news_list_view,
+	news_create_view,
+	news_detail_view,
+	news_update_view,
+	news_delete_view,
+)
+from uximhome.views import(
+	session_page
 )
 
 
 
 urlpatterns = [
-	path('',blog_post_list_view),
-	path('<str:slug>/',blog_post_detail_view),
-	path('<str:slug>/edit/',blog_post_update_view),
-	path('<str:slug>/delete/',blog_post_delete_view),
+	path('',session_page),
+	path('news/',news_list_view),
+	path('news/create/',news_create_view),
+	path('news/<str:slug>/',news_detail_view),
+	path('news/<str:slug>/edit/',news_update_view),
+	path('news/<str:slug>/delete/',news_delete_view),
 	]
