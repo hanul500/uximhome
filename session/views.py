@@ -18,46 +18,88 @@ def news_detail_view(request, slug):
 	context={"object": obj}
 	return render(request, 'news/detail.html', context)
 
-#wrappers
 @staff_member_required
 @login_required
 def news_create_view(request):
 	form = NewsModelForm(request.POST or None, request.FILES)
 	if form.is_valid():
 		obj = form.save(commit=False)
-		obj.user = request.user
+		obj.user = request.user #set current user
 		obj.save()
-		#form.save() #modelform only needs ".save"
 		form = NewsModelForm() #reinitialize
 	context={
 		'form' : form
 	}
 	return render(request, 'news/create.html', context)
 
-#wrappers
 @staff_member_required
 @login_required
 def news_update_view(request,slug):
-	#first retrieve obj
 	obj = get_object_or_404(NewsPost, slug=slug) #lookup the object
 	form = NewsModelForm(request.POST or None, instance=obj)
 	if form.is_valid():
-	 	form.save()
+	 	form.save() #update current data
 	context={'form': form,"title": f"Update {obj.title}"}
-	return render(request, 'news/detail.html', context)
+	return render(request, 'news/create.html', context)
 
-#wrappers
+
 @staff_member_required
 @login_required
 def news_delete_view(request,slug):
-	obj = get_object_or_404(NewsPost, slug=slug)
-	#first retrieve obj
+	obj = get_object_or_404(NewsPost, slug=slug) #lookup the object
 	if request.method == "POST":
-		#confirm
 		obj.delete()
-		return redirect('../../')
+		return redirect('../../') #redirect
 	context={"object": obj}
 	return render(request, 'news/delete.html', context)
 
 
+
 ######################################################UXIMACTIVITY
+
+
+
+def activity_list_view(request):
+	qs = ActivityPost.objects.all() #objects -> django manager
+	context={'object_list' : qs}
+	return render(request, 'activity/list.html', context)
+
+def activity_detail_view(request, slug):
+	obj = get_object_or_404(ActivityPost, slug=slug) #handles 404exceptions in 1 line
+	context={"object": obj}
+	return render(request, 'activity/detail.html', context)
+
+@staff_member_required
+@login_required
+def activity_create_view(request):
+	form = ActivityModelForm(request.POST or None, request.FILES or None)
+	if form.is_valid():
+		obj = form.save(commit=False)
+		obj.user = request.user #set current user
+		obj.save()
+		form = ActivityModelForm() #reinitialize
+	context={
+		'form' : form
+	}
+	return render(request, 'activity/create.html', context)
+
+@staff_member_required
+@login_required
+def activity_update_view(request,slug):
+	obj = get_object_or_404(NewsPost, slug=slug) #lookup the object
+	form = ActivityModelForm(request.POST or None, instance=obj)
+	if form.is_valid():
+	 	form.save() #update current data
+	context={'form': form,"title": f"Update {obj.title}"}
+	return render(request, 'activity/create.html', context)
+
+
+@staff_member_required
+@login_required
+def activity_delete_view(request,slug):
+	obj = get_object_or_404(ActivityPost, slug=slug) #lookup the object
+	if request.method == "POST":
+		obj.delete()
+		return redirect('../../') #redirect
+	context={"object": obj}
+	return render(request, 'activity/delete.html', context)

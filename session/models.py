@@ -7,12 +7,20 @@ User = settings.AUTH_USER_MODEL #the only way
 
 class ActivityPost(models.Model):
 	#활동사진(사진, 날짜)
+	slug = models.SlugField(unique=True, blank=True, null=False)
+	user = models.ForeignKey(User, default=1, null=True, on_delete=models.SET_NULL) #bind a model(user) to another(newpost)
 	image = models.ImageField(blank=True,upload_to="session/activity")
-	publish_date = models.DateTimeField(auto_now=False)
-	updated = models.DateTimeField(auto_now=False)
-	def publish(self):
-		self.updated = timezone.now(); 
-		self.save()
+
+	publish_date = models.DateTimeField(auto_now_add=True, null=True) #when added to DB
+	updated = models.DateTimeField(auto_now=True) #when click save
+
+		#order of qs
+	class Meta:
+		ordering = ['-publish_date', '-updated']
+
+	def get_absolute_url(self):
+		return f"{self.slug}"
+
 
 
 class NewsPost(models.Model):
@@ -22,14 +30,13 @@ class NewsPost(models.Model):
 	title = models.CharField(max_length=120)
 	content = models.TextField(null=True, blank=True)
 	image = models.ImageField(blank=True, upload_to="session/news")
-	publish_date = models.DateTimeField(auto_now_add=True, null=True)
+
+	publish_date = models.DateTimeField(auto_now_add=True, null=True) #when added to DB
 	updated = models.DateTimeField(auto_now=True) #when click save
 
-	#def get_absolute_url(self):
-	#	return f"/news/{self.slug}"
+	#order of qs
+	class Meta:
+		ordering = ['-publish_date', '-updated']
 
-	#def get_edit_url(self):
-	#	return f"{self.get_absolute_url()}/edit"
-
-	#def get_delete_url(self):
-	#	return f"{self.get_absolute_url()}/delete"
+	def get_absolute_url(self):
+		return f"{self.slug}"

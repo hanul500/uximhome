@@ -10,5 +10,5 @@ class NewsModelForm(forms.ModelForm):
 class ActivityModelForm(forms.ModelForm):
 	class Meta:
 		model = ActivityPost
-		fields = ['image']
+		fields = ['image','slug']
 		#fields to be used (django brings from model)
