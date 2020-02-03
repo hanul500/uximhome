@@ -1,0 +1,59 @@
+
+/** ADD YOUR AWESOME CODES HERE **/
+.cd-headline {
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+*{
+    font-family: 'Noto Sans', sans-serif;
+    
+}
+
+#about {
+    background-color: #f2f3f5;
+}
+
+.img-fluid:hover {
+    cursor: pointer;
+    opacity: 0.8;  
+}
+
+.img-fluid {
+box-shadow: -webkit-linear-gradient(45deg, #4ebcb9 0%,#625da7 100%);
+}
+
+.session-title {
+    margin-bottom: 0px;
+}
+.signin {
+    background-color: white;
+    border-radius: 50px;
+    letter-spacing: 1px;
+	font-size: 14px;
+	position: relative;
+}
+
+.signin::after {
+    content: '';
+    width: 0;
+    height: 3px;
+    background: #ffffff;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+	right: 0;
+	text-align: center;
+	margin: 0 auto;
+    border-radius: 0px;
+    -webkit-transition: all .5s;
+    transition: all .5s;
+    z-index: -1;
+}
+
+.hi {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+}
