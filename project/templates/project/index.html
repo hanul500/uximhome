@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>index page</title>
+    </head>
+    <body>
+        <form method="POST" action="." enctype="multipart/form-data">{% csrf_token %}
+            {{form.as_p}} 
+            <input type="file" name="image" multiple />
+            {{form.non_field_errors}}
+            
+            <button type="submit">submit</button></form>
+       
+
+    </body>
+</html>

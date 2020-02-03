@@ -1,0 +1,42 @@
+<form id="post_form" method="post" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% for hidden in postForm.hidden_fields %}
+        {{ hidden }}hidden_fields
+    {% endfor %}
+
+    {% for field in postForm %}
+        {{ field }}postForm <br />
+    {% endfor %}
+
+    {{ formset.management_form }}
+    {% for form in formset %}
+        {{ form }} formset
+    {% endfor %}
+
+    <input type="submit" name="submit" value="Submit" />
+</form>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+    var max_fields      = 20;
+    var wrapper         = $(".container1");
+    var add_button      = $(".add_form_field");
+ 
+    var x = 1;
+    $(add_button).click(function(e){
+        e.preventDefault();
+        if(x < max_fields){
+            x++;
+            $(wrapper).append('<div><input type="text" name="mytext[]"/><a href="#" class="delete">Delete</a></div>'); //add input box
+        }
+  else
+  {
+  alert('You Reached the limits')
+  }
+    });
+ 
+    $(wrapper).on("click",".delete", function(e){
+        e.preventDefault(); $(this).parent('div').remove(); x--;
+    })
+});
+</script>

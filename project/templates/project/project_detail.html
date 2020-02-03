@@ -1,0 +1,15 @@
+{%extends 'base.html'%}
+{%block content%}
+
+프로젝트 이름 : {{obj.project_name}}<br>
+프로젝트 멤버 : {{obj.project_member}}<br>
+프로젝트 기간 : {{obj.project_period}}<br>
+프로젝트 내용 : {{obj.project_text}}<br>
+
+
+
+{%for i in images%}
+<image src="{{i.project_image.url}}" width="100px">
+{%endfor%}
+
+{%endblock%}
