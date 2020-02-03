@@ -7,5 +7,21 @@ from django.template.loader import get_template
 
 
 def home_page(request):
-	context = {"title": "안녕 유심"}
+	context = {"title": "UXIM HOMEPAGE"}
 	return render(request, "home.html", context)
+
+def session_page(request):
+	context = {"title": "SESSION PAGE"}
+	return render(request, "session.html",context)
+
+def about_page(request):
+	context = {"title": "ABOUT PAGE"}
+	return render(request, "about.html", context)
+
+def contact_page(request):
+	context = {"title": "CONTACT PAGE"}
+	return render(request, "contact.html", context)
+
+def project_page(request):
+	context = {"title": "PROJECT PAGE"}
+	return render(request, "project.html")
