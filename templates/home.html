@@ -1,9 +1,166 @@
-<h1>안녕 유심 친구들</h1>
-안녕안녕
-{%if user.is_authenticated%}
-<a href="logout/"><button>로그아웃</button></a>
-<a href="register/"><button>회원가입</button></a>
-{%else%}
-<a href="login/"><button>로그인</button></a>
-{%endif%}
+{% extends "base.html" %}
+{%load static%}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">   
+   
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+ 
+     <!-- Site Metas -->
+    <title>UXIM - People Exploring HCI</title>  
 
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="{%static 'src/homelogo.png'%}" type="image/x-icon" />
+    <link rel="" href="{%static 'src/homelogo.png'%}">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{%static 'css/bootstrap.min.css'%}">
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="{%static 'style.css'%}">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="{%static 'css/responsive.css'%}">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{%static 'css/custom.css'%}">
+	<script src="{%static 'js/modernizr.js'%}"></script> <!-- Modernizr -->
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body id="page-top" class="politics_version">
+
+
+	<section id="home" class="main-banner parallaxie" style="background-image: url({%static 'src/main1.png'%})">
+		<div class="heading">
+			<h3 class="cd-headline clip is-full-width">
+				<span>UXIM은 새롭고 다양한 기술에 가슴이 뛰는 학생들이 모여
+경영, <br> 디자인, 공학의 시선에서 해결책을 제시하며 가치를 창출하고자
+HCI/UX를 이론적으로 탐구하고 실질적인 결과물을 만들어내는 </span>
+				<span class="cd-words-wrapper">
+					<b class="is-visible">연세대학교 최초의 HCI/UX 학회입니다.</b>
+				</span>
+			</h3>
+		</div>
+	</section>
+
+
+    <div id="about" class="section wb">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="message-box">
+                        <h2>About</h2>
+                        <p> 이것저것 유심에 관련되어서 나오는 것들 </p>
+						<p>이것저것 유심에 관련되어서 나오는 것들 2</p>
+
+                        <a href="#" class="sim-btnn btn-hover-neww" data-text="Download CV"><span>더보기</span></a>
+                    </div><!-- end messagebox -->
+                </div><!-- end col -->
+
+                <div class="col-md-6">
+                    <div class="right-box-pro wow fadeIn">
+                        <img src="{%static 'src/975.jpg'%}" alt="" class="img-fluid img-rounded">
+                    </div><!-- end media -->
+                </div><!-- end col -->
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div><!-- end section -->
+	
+    <div id="services" class="section lb">
+        <div class="container">
+            <div class="section-title text-left">
+                <h3>Session</h3>
+                <p>세션에 관련된 설명 등</p>
+            </div><!-- end title -->
+
+            <div class="row">
+				<div class="col-md-4">
+                    <div class="session-inner-box">
+						<div class="ser-icon">
+							<i class="flaticon-seo"></i>
+						</div>
+						<h2>HCI STUDY</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+					</div>
+                </div><!-- end col -->
+                <div class="col-md-4">
+                    <div class="session-inner-box">
+						<div class="ser-icon">
+							<i class="flaticon-development"></i>
+						</div>
+						<h2>DEBATE</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+					</div>
+                </div><!-- end col -->
+				<div class="col-md-4">
+                    <div class="session-inner-box">
+						<div class="ser-icon">
+							<i class="flaticon-process"></i>
+						</div>
+						<h2>TEAM BUILDING</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+					</div>
+                </div><!-- end col -->
+            </div><!-- end row -->
+            <a href="#" class="sim-btnn btn-hover-neww" data-text="Download CV"><span>더보기</span></a>
+        </div><!-- end container -->
+    </div><!-- end section -->
+	
+	<div id="portfolio" class="section lb">
+		<div class="container">
+			<div class="section-title text-left">
+                <h3>Project</h3>
+                <p>Project에 대한 설명 <br> <br>
+                Recent Projects:</p>
+            </div><!-- end title -->
+			
+			<div class="gallery-list row">
+				<div class="col-md-4 col-sm-6 gallery-grid gal_a gal_b">
+					<div class="gallery-single fix">
+						<img src="{%static 'uploads/gallery_img-01.jpg'%}" class="img-fluid" alt="Image">
+					</div>
+				</div>
+				
+				<div class="col-md-4 col-sm-6 gallery-grid gal_c gal_b">
+					<div class="gallery-single fix">
+						<img src="{%static 'uploads/gallery_img-02.jpg'%}" class="img-fluid" alt="Image">
+					</div>
+				</div>
+				
+				<div class="col-md-4 col-sm-6 gallery-grid gal_a gal_c">
+					<div class="gallery-single fix">
+						<img src="{%static 'uploads/gallery_img-03.jpg'%}" class="img-fluid" alt="Image">
+					</div>
+				</div>
+			</div>
+            <a href="#" class="sim-btnn btn-hover-neww" data-text="Download CV"><span>더보기</span></a>
+			</div>
+		</div>
+
+
+
+    <a href="#" id="scroll-to-top" class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
+
+    <!-- ALL JS FILES -->
+    <script src="{%static 'js/all.js'%}"></script>
+	<!-- Camera Slider -->
+	<script src="{%static 'js/jquery.mobile.customized.min.js'%}"></script>
+	<script src="{%static 'js/jquery.easing.1.3.js'%}"></script> 
+	<script src="{%static 'js/parallaxie.js'%}"></script>
+	<script src="{%static 'js/headline.js'%}"></script>
+    <!-- ALL PLUGINS -->
+    <script src="{%static 'js/custom.js'%}"></script>
+    <script src="{%static 'js/jquery.vide.js'%}"></script>
+
+</body>
+</html>
+
+{% endblock %}

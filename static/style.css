@@ -32,7 +32,10 @@ body {
 
 html, body{
 	height: 100%;
+<<<<<<< HEAD
     background-color: gray;
+=======
+>>>>>>> 817362121238d09e792769bb41f0b32b7c2fbd19
 }
 
 body.demos .section {
@@ -571,7 +574,10 @@ xclip
 .section.db h3 {
     color: #ffffff;
 }
-
+.mainsection {
+    position: absolute;
+    margin-top: 50;
+}
 
 
 .btn-hover-new{
