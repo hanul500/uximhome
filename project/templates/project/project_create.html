@@ -8,9 +8,11 @@
     </head>
     <body>
         <form method="POST" action="." enctype="multipart/form-data">{% csrf_token %}
-            {{form.as_p}} 
-            <input type="file" name="image" multiple />
-            {{form.non_field_errors}}
+            project name<input type="text" name="project_name"><br>
+            project_member<input type="text" name="project_member"><br>
+            project_period<input type="text" name="project_period"><br>
+            project_text<input type="text" name="project_name"><br>
+            <input type="file" name="image" multiple /><br>
             
             <button type="submit">submit</button></form>
        

@@ -1,0 +1,22 @@
+{%extends 'base.html'%}
+{%block content%}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>index page</title>
+    </head>
+    <body>
+        <form method="POST" action="." enctype="multipart/form-data">{% csrf_token %}
+            project name<input type="text" value="{{proj_obj.project_name}}" name="project_name"><br>
+            project_member<input type="text" value="{{proj_obj.project_member}}" name="project_member"><br>
+            project_period<input type="text" value="{{proj_obj.project_period}}" name="project_period"><br>
+            project_text<input type="text" value="{{proj_obj.project_text}}" name="project_name"><br>
+            <input type="file" name="image" multiple /><br>
+            
+            <button type="submit">submit</button></form>
+       
+
+    </body>
+</html>
+{%endblock%}

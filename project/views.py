@@ -23,25 +23,56 @@ def project_create(request):
 			print(form.is_valid())
 			obj = form.save(commit=False)
 			obj.project_user = request.user
+			obj.project_main_image = request.FILES.get('main_image')
 			obj.save()
-			main = True
+
 			for f in request.FILES.getlist('image'):
 				image = Project_Image()
 				image.project=obj
 				image.project_image = f
 				image.save()
-				if main:
-					obj.project_main_image = f
-					obj.save()
-					main=False
+
 		form = ProjectForm()
-	template = 'project/index.html'
+	template = 'project/project_create.html'
 	context = {"form":form}
 	return render(request, template, context)
+
 
 def project_detail(request, project_name):
 	obj = get_object_or_404(Project, project_name=project_name)
 	images = Project_Image.objects.all().filter(project=obj)
 	template = 'project/project_detail.html'
 	context = {"obj":obj, "images": images}
+	return render(request, template, context)
+
+
+def project_update(request, project_name):
+	proj_obj = get_object_or_404(Project, project_name=project_name)
+	form = ProjectForm(request.POST or None , request.FILES or None, instance=proj_obj)
+	if request.method == 'POST':
+		if form.is_valid():
+			print(form.is_valid())
+			obj = form.save(commit=False)
+			obj.project_user = request.user
+			obj.project_main_image = request.FILES.get('main_image')
+			obj.save()
+
+			for f in request.FILES.getlist('image'):
+				image = Project_Image()
+				image.project=obj
+				image.project_image = f
+				image.save()
+
+		form = ProjectForm()
+	template = 'project/project_update.html'
+	context = {"form":form,'proj_obj':proj_obj}
+	return render(request, template, context)
+
+
+def project_delete(request, project_name):
+	proj_obj = get_object_or_404(Project, project_name=project_name)
+	if request.method == 'POST':
+		proj_obj.delete()
+	template = 'project/project_delete.html'
+	context = {'proj_obj':proj_obj}
 	return render(request, template, context)

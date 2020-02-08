@@ -9,6 +9,8 @@ urlpatterns = [
     path('', project_page),
     path('create/', project_create),
     path('<str:project_name>/', project_detail),
+    path('<str:project_name>/update/', project_update),
+    path('<str:project_name>/delete/', project_delete),
     #path('media/', media_upload),
 
     ]
