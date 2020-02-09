@@ -19,6 +19,7 @@ from uximhome.views import(
 
 urlpatterns = [
 	path('',session_page),
+	
 	path('news/create/',news_create_view),
 	path('news/<str:slug>/edit/',news_update_view),
 	path('news/<str:slug>/delete/',news_delete_view),
